@@ -161,3 +161,6 @@ cython_debug/
 
 #environment
 flaskwebapp/
+
+#database
+database.db
