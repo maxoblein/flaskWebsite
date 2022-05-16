@@ -35,3 +35,16 @@ def delete_note():
             db.session.commit()
     
     return jsonify({})
+
+@views.route('delete-all-notes',methods=['POST'])
+def delete_all_notes():
+    data = json.loads(request.data)
+    userID = data['userID']
+    flash('List cleared!',category='success')
+    userNotes = Note.query.filter_by(userID=current_user.id)
+    for note in userNotes:       
+        db.session.delete(note)
+        db.session.commit()
+
+
+    return jsonify({})
